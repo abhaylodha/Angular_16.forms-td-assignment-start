@@ -15,37 +15,33 @@
       -->
       <form (ngSubmit)="onSubmit()" #formRef="ngForm">
 
-        
+
         <button class="btn btn-default" type="button" (click)="suggestDeaults()">Fill Defaults</button>
         <button class="btn btn-default" type="button" (click)="suggestSubscription()">Suggest subscription</button>
 
         <div id="id_credentials" ngModelGroup="group_credentials" #Credentials="ngModelGroup">
           <div class="form-group">
             <label for="email">Email ID : </label>
-            <input type="text" id="id_email" class="form-control" ngModel name="name_email"
-            required email #emailRef="ngModel">
-            <span *ngIf="!emailRef.valid && emailRef.touched"
-            class="help-block">Please enter a valid Email.</span>
+            <input type="text" id="id_email" class="form-control" ngModel name="name_email" required email
+              #emailRef="ngModel">
+            <span *ngIf="!emailRef.valid && emailRef.touched" class="help-block">Please enter a valid Email.</span>
           </div>
 
           <div class="form-group">
             <label for="password">Password : </label>
-            <input type="password" id="id_password"
-            class="form-control" ngModel name="name_password"
-            required password #passwordRef="ngModel">
-            <span *ngIf="!passwordRef.valid && passwordRef.touched"
-            class="help-block">Please enter a valid Password.</span>
+            <input type="password" id="id_password" class="form-control" ngModel name="name_password" required password
+              #passwordRef="ngModel">
+            <span *ngIf="!passwordRef.valid && passwordRef.touched" class="help-block">Please enter a valid
+              Password.</span>
           </div>
         </div>
 
         <div class="form-group">
           <label for="subscriptionType">Subscription Type</label>
-          <select id="id_subscriptionType" class="form-control"
-          ngModel name="name_subscriptionType" required
+          <select id="id_subscriptionType" class="form-control" ngModel name="name_subscriptionType" required
             #subscriptionTypeRef="ngModel">
-            <option 
-            *ngFor="let subscriptionType of subscriptionTypes"
-            [value]="subscriptionType">{{ subscriptionType }}</option>
+            <option *ngFor="let subscriptionType of subscriptionTypes" [value]="subscriptionType">{{ subscriptionType }}
+            </option>
           </select>
           <span class="help-block" *ngIf="!subscriptionTypeRef.valid 
           && subscriptionTypeRef.touched">Please select a subscription type.</span>
@@ -54,6 +50,13 @@
         <button class="btn btn-primary" type="submit" [disabled]="!formRef.valid">Submit</button>
 
       </form>
+
+      <div *ngIf="submitted">
+        <h3>Your data</h3>
+        <p>Email : {{ data.email }}</p>
+        <p>Password : {{ data.password }}</p>
+        <p>Subscription : {{ data.subscriptionType }}</p>
+      </div>
     </div>
   </div>
 </div>

@@ -13,6 +13,7 @@ export class AppComponent {
     = {
       email: "", password: "", subscriptionType: ""
     }
+    submitted = false;
 
   @ViewChild('formRef', { static: true }) formData: NgForm;
 
@@ -22,6 +23,7 @@ export class AppComponent {
     this.data.password = this.formData.value.group_credentials.name_password;
     this.data.subscriptionType = this.formData.value.name_subscriptionType;
     console.log(this.data);
+    this.submitted = true;
   }
 
   suggestDeaults() {
